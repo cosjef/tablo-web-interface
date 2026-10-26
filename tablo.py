@@ -202,7 +202,7 @@ class TabloClient:
             parsed = urlsplit(url) if isinstance(url, str) else None
             device_host = urlsplit(self.DEVICE_URL).hostname
             valid = (parsed and parsed.scheme == "http" and parsed.hostname == device_host
-                     and parsed.port == 8885 and not parsed.username and not parsed.password)
+                     and parsed.port != 0 and not parsed.username and not parsed.password)
         except ValueError:
             valid = False
         if not valid:

@@ -49,6 +49,8 @@ class ConfigurationTests(unittest.TestCase):
         client = TabloClient(config)
         with patch.object(client, "device_json", return_value={"playlist_url": "http://tablo.lan:8885/stream/abc.m3u8"}):
             self.assertEqual(client.watch_recording("/recordings/airings/1"), "http://tablo.lan:8885/stream/abc.m3u8")
+        with patch.object(client, "device_json", return_value={"playlist_url": "http://tablo.lan:8887/stream/abc.m3u8"}):
+            self.assertEqual(client.watch_recording("/recordings/airings/1"), "http://tablo.lan:8887/stream/abc.m3u8")
         with patch.object(client, "device_json", return_value={"playlist_url": "http://other.lan:8885/stream/abc.m3u8"}):
             with self.assertRaisesRegex(TabloError, "invalid recording playlist"):
                 client.watch_recording("/recordings/airings/1")
