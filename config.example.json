@@ -1,0 +1,6 @@
+{
+  "device_url": "http://YOUR_TABLO_ADDRESS:8887",
+  "server_id": "SID_YOUR_TABLO_SERVER_ID",
+  "signing_key": "YOUR_REQUEST_SIGNING_KEY",
+  "device_key": "YOUR_DEVICE_KEY"
+}

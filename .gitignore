@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+config.local.json
+
+# The app uses one vendored HLS.js bundle and its license.
+vendor/node_modules/*
+!vendor/node_modules/hls.js/
+vendor/node_modules/hls.js/*
+!vendor/node_modules/hls.js/LICENSE
+!vendor/node_modules/hls.js/LICENSE-2.0.txt
+!vendor/node_modules/hls.js/dist/
+vendor/node_modules/hls.js/dist/*
+!vendor/node_modules/hls.js/dist/hls.min.js
+
+# A previous FFmpeg output is not part of the test fixture.
+test_media/output.mp4
