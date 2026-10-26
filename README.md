@@ -9,13 +9,19 @@ This is an unofficial project tested with one 4th-generation device. Other model
 - Python 3 (tested with 3.14)
 - FFmpeg and `ffprobe`, with the `libx264` and AAC encoders available
 - A 4th-generation Tablo reachable on the same network and a matching Tablo account
-- Request-signing values you are authorized to use. They are not included in the current source tree; their provenance and redistribution rights have not been established.
+- Request-signing values you are authorized to use (see below)
 
 The browser HLS.js bundle is included under `vendor/`. Node.js is needed only to run the JavaScript tests.
 
 ## Configure and run
 
 Copy `config.example.json` to `config.local.json` and fill in all four fields. The local file is ignored by Git. The `device_url` must be `http://YOUR_TABLO_ADDRESS:8887`; `server_id` is the `server_id` returned by your Tablo's `/server/info` endpoint on port 8887. Put your authorized request-signing values in `signing_key` and `device_key`. Do not put your Tablo account password in this file.
+
+### Where the signing values come from
+
+The 4th-generation local API uses two fixed application signing values in addition to the account-specific Lighthouse token obtained when you sign in. Unofficial [protocol documentation](https://github.com/ksaye/tablo-web/blob/main/docs/protocol.md#2-talking-to-the-dvr) lists the values as `HashKey` and `DeviceKey`; those correspond to `signing_key` and `device_key` in `config.local.json`. A [separate API project](https://github.com/trevor-viljoen/tablo-api#how-it-works) reports that the signing scheme was reverse-engineered from the Tablo iOS app by the `tablo2plex` project.
+
+We have not verified the original source of this project's earlier copy of those values or permission to redistribute them. This repository does not include them. Use the linked documentation only if you are authorized to use those values; signing in to your Tablo account does not generate them.
 
 ```sh
 cp config.example.json config.local.json
